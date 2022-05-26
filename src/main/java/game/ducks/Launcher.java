@@ -6,7 +6,15 @@ public class Launcher
 {
     public static void main(String[] args)
     {
-        GameView gameView = new GameView();
+        SwingUtilities.invokeLater(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                GameView gameView = new GameView();
+            }
+        });
+
 
     }
 }
