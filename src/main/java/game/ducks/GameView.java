@@ -3,11 +3,13 @@ package game.ducks;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameView extends JFrame
 {
     private GamePanel gamePanel;
+    private List<Duck> duckList;
     GameView()
     {
         setVisible(true);
@@ -17,6 +19,10 @@ public class GameView extends JFrame
         setLocationRelativeTo(null);
 
         gamePanel = new GamePanel();
+        duckList = new ArrayList<>();
+        duckList.add(new YellowDuck("yellow", 1));
+        duckList.add(new BlueDuck("blue", 5));
+        duckList.add(new PinkDuck("pink", 7));
         add(gamePanel);
     }
 
@@ -36,7 +42,6 @@ public class GameView extends JFrame
         protected void paintComponent(Graphics g)
         {
             g.clearRect(0, 0, 1000, 1000);
-//            g.drawRect(0, 0, 1000, 1000);
             x++;
             y++;
 
