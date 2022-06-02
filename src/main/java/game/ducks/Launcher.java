@@ -1,6 +1,7 @@
 package game.ducks;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class Launcher
 {
@@ -11,7 +12,14 @@ public class Launcher
             @Override
             public void run()
             {
-                GameView gameView = new GameView();
+                try
+                {
+                    GameView gameView = new GameView();
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+
             }
         });
 

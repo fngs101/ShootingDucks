@@ -1,16 +1,23 @@
 package game.ducks;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameView extends JFrame
 {
+
+    //przerobic silnik z jutuba, bez Timera
     private GamePanel gamePanel;
     private List<Duck> duckList;
-    GameView()
+
+    GameView() throws IOException
     {
         setVisible(true);
         setSize(1000, 1000);
@@ -23,6 +30,7 @@ public class GameView extends JFrame
         duckList.add(new YellowDuck("yellow", 1));
         duckList.add(new BlueDuck("blue", 5));
         duckList.add(new PinkDuck("pink", 7));
+
         add(gamePanel);
     }
 
@@ -32,12 +40,12 @@ public class GameView extends JFrame
         private int x = 10;
         private int y = 10;
 
-        GamePanel()
-                //gotowy lepszy engine obczaj majnkfrata kwadraty zastapic klasami chicken a najlepiej z klasami dziedzicznymi
+        GamePanel() throws IOException
         {
             timer = new Timer(1, (ActionEvent e) -> updateImage());
             timer.start();
         }
+
         @Override
         protected void paintComponent(Graphics g)
         {
@@ -48,7 +56,11 @@ public class GameView extends JFrame
             g.setColor(Color.CYAN);
             g.drawRect(x, y, 50, 30);
 
-            System.out.println("metoda paint compoentn");
+            for(Duck duck : duckList)
+            {
+                duck.render(g);
+            }
+
         }
 
         private void updateImage()
