@@ -14,58 +14,38 @@ public class GameView extends JFrame
 {
 
     //przerobic silnik z jutuba, bez Timera
-    private GamePanel gamePanel;
+//    private GamePanel gamePanel;
+    private JFrame frame;
+    private int width;
+    private int height;
+    private String title;
+    private Canvas canvas;
     private List<Duck> duckList;
 
-    GameView() throws IOException
+    GameView(String title, int width, int height)
     {
-        setVisible(true);
-        setSize(1000, 1000);
-        setTitle("Duck game");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
-        gamePanel = new GamePanel();
-        duckList = new ArrayList<>();
-        duckList.add(new YellowDuck("yellow", 1));
-        duckList.add(new BlueDuck("blue", 5));
-        duckList.add(new PinkDuck("pink", 7));
-
-        add(gamePanel);
+        this.title = title;
+        this.width = width;
+        this.height = height;
+        createGameView();
     }
 
-    class GamePanel extends JPanel
+    private void createGameView()
     {
-        private Timer timer;
-        private int x = 10;
-        private int y = 10;
+        frame = new JFrame(title);
+        frame.setSize(width, height);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 
-        GamePanel() throws IOException
-        {
-            timer = new Timer(1, (ActionEvent e) -> updateImage());
-            timer.start();
-        }
+        canvas = new Canvas();
+        canvas.setPreferredSize(new Dimension(width, height));
+        canvas.setMaximumSize(new Dimension(width, height));
+        canvas.setMinimumSize(new Dimension(width, height));
 
-        @Override
-        protected void paintComponent(Graphics g)
-        {
-            g.clearRect(0, 0, 1000, 1000);
-            x++;
-            y++;
-
-            g.setColor(Color.CYAN);
-            g.drawRect(x, y, 50, 30);
-
-            for(Duck duck : duckList)
-            {
-                duck.render(g);
-            }
-
-        }
-
-        private void updateImage()
-        {
-            repaint();
-        }
+        frame.add(canvas);
+        frame.pack();
     }
+
 }
