@@ -1,13 +1,20 @@
 package game.ducks;
 
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+
 public class Game implements Runnable
 {
     private GameView gameView;
     public int width;
     public int height;
     public String title;
+
     private boolean running = false;
     private Thread thread;
+
+    private BufferStrategy bs;
+    private Graphics g;
 
     Game(String title, int width, int height)
     {
@@ -29,7 +36,17 @@ public class Game implements Runnable
 
     private void render()
     {
+        bs = gameView.getCanvas().getBufferStrategy();
+        if(bs == null)
+        {
+            gameView.getCanvas().createBufferStrategy(3);
+            return;
+        }
+        g = bs.getDrawGraphics();
 
+        g.fillRect(0, 0, width, height);
+        bs.show();
+        g.dispose();
     }
 
     public void run()
@@ -65,4 +82,6 @@ public class Game implements Runnable
             e.printStackTrace();
         }
     }
+
+
 }

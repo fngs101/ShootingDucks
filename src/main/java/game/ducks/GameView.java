@@ -48,4 +48,8 @@ public class GameView extends JFrame
         frame.pack();
     }
 
+    public Canvas getCanvas()
+    {
+        return canvas;
+    }
 }
