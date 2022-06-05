@@ -1,26 +1,18 @@
 package game.ducks;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameView extends JFrame
 {
 
-    //przerobic silnik z jutuba, bez Timera
-//    private GamePanel gamePanel;
     private JFrame frame;
     private int width;
     private int height;
     private String title;
     private Canvas canvas;
-    private List<Duck> duckList;
+//    private List<Duck> duckList; przeniesc do game
 
     GameView(String title, int width, int height)
     {

@@ -5,9 +5,9 @@ import java.awt.image.BufferedImage;
 
 public class YellowDuck extends Duck
 {
-    YellowDuck(String color, int amountOfLife)
+    YellowDuck(String color, int amountOfLife, int width, int height)
     {
-        super(color, amountOfLife);
+        super(color, amountOfLife, width, height);
         image = ImageManager.getInstance().getYellowDuck();
     }
 

@@ -14,7 +14,8 @@ public class ImageManager
 
     private ImageManager()
     {
-        File file = new File("C:\\Users\\jszymczak\\Desktop\\ducks\\blue\\BishopB.png");
+        File file = new File(String.valueOf(this.getClass().getResource("/textures/test.png").getPath()));
+        System.out.println(file.exists());
         try
         {
             yellowDuck = ImageIO.read(file);
@@ -23,6 +24,7 @@ public class ImageManager
         } catch (IOException e)
         {
             e.printStackTrace();
+            System.exit(1);
         }
     }
 

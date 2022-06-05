@@ -11,12 +11,16 @@ public abstract class Duck
     private String color;
     private int amountOfLife;
     BufferedImage image;
+    private int width;
+    private int height;
 
-    Duck(String color, int amountOfLife)
+    Duck(String color, int amountOfLife, int width, int height)
     {
         this.color = color;
         this.amountOfLife = amountOfLife;
         image = prepareImage();  //-> factory method wzorzec projektowy
+        this.width = width;
+        this.height = height;
 
     }
 
@@ -42,8 +46,25 @@ public abstract class Duck
         this.amountOfLife = amountOfLife;
     }
 
-    public void render(Graphics g)
-    {
+    public abstract void render(Graphics g);
 
+    public int getWidth()
+    {
+        return width;
+    }
+
+    public int getHeight()
+    {
+        return height;
+    }
+
+    public void setWidth(int width)
+    {
+        this.width = width;
+    }
+
+    public void setHeight(int height)
+    {
+        this.height = height;
     }
 }

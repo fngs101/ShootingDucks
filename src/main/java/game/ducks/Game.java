@@ -16,6 +16,9 @@ public class Game implements Runnable
     private BufferStrategy bs;
     private Graphics g;
 
+    //States
+    private State gameState;
+
     Game(String title, int width, int height)
     {
         this.width = width;
@@ -27,11 +30,17 @@ public class Game implements Runnable
     private void init()
     {
         gameView = new GameView(title, width, height);
+
+        gameState = new GameState();
+        State.setState(gameState);
     }
 
     private void update()
     {
-
+        if(State.getState() != null)
+        {
+            State.getState().tick();
+        }
     }
 
     private void render()
@@ -43,8 +52,15 @@ public class Game implements Runnable
             return;
         }
         g = bs.getDrawGraphics();
+        //clear screen
+        g.clearRect(0, 0, width, height);
+        //draw
 
-        g.fillRect(0, 0, width, height);
+        if(State.getState() != null)
+        {
+            State.getState().render(g);
+        }
+        //end drawing
         bs.show();
         g.dispose();
     }
@@ -52,10 +68,35 @@ public class Game implements Runnable
     public void run()
     {
         init();
+        int fps = 60;
+        double timePerTick = 1000000000 / fps;
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime();
+        long timer = 0;
+        int ticks = 0;
+
         while(running)
         {
-            update();
-            render();
+            now = System.nanoTime();
+            delta += (now - lastTime) / timePerTick;
+            timer += now - lastTime;
+            lastTime = now;
+
+            if(delta >= 1)
+            {
+                update();
+                render();
+                ticks++;
+                delta--;
+            }
+
+            if(timer >= 1000000000)
+            {
+                System.out.println("Ticks and frames: " + ticks);
+                ticks = 0;
+                timer = 0;
+            }
         }
 
         stop();

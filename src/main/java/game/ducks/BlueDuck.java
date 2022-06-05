@@ -1,6 +1,5 @@
 package game.ducks;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -8,10 +7,13 @@ import java.awt.image.BufferedImage;
 public class BlueDuck extends Duck
 {
 
-    BlueDuck(String color, int amountOfLife)
+    private int width;
+    private int height;
+    BlueDuck(String color, int amountOfLife, int width, int height)
     {
-        super(color, amountOfLife);
-
+        super(color, amountOfLife, width, height);
+        this.width = width;
+        this.height = height;
     }
 
     @Override
@@ -23,8 +25,6 @@ public class BlueDuck extends Duck
     @Override
     public void render(Graphics g)
     {
-
-        g.drawImage(image, 23, 150, null);
-//        g.drawRect(40, 40, 50, 50);
+        g.drawImage(image, 0, 0, null);
     }
 }

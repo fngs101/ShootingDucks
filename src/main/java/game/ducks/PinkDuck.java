@@ -5,9 +5,9 @@ import java.awt.image.BufferedImage;
 
 public class PinkDuck extends Duck
 {
-    PinkDuck(String color, int amountOfLife)
+    PinkDuck(String color, int amountOfLife, int width, int height)
     {
-        super(color, amountOfLife);
+        super(color, amountOfLife, width, height);
         image = ImageManager.getInstance().getPinkDuck();
     }
 
