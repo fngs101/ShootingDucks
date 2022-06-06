@@ -18,6 +18,7 @@ public class Game implements Runnable
 
     //States
     private State gameState;
+    private State menuState;
 
     Game(String title, int width, int height)
     {
@@ -32,6 +33,7 @@ public class Game implements Runnable
         gameView = new GameView(title, width, height);
 
         gameState = new GameState();
+        menuState = new MenuState();
         State.setState(gameState);
     }
 
