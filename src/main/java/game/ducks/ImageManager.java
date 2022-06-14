@@ -14,13 +14,16 @@ public class ImageManager
 
     private ImageManager()
     {
-        File file = new File(String.valueOf(this.getClass().getResource("/textures/test.png").getPath()));
-        System.out.println(file.exists());
+
+        File yellowLeft = new File(String.valueOf(ImageManager.class.getResource("/textures/yellowleft.png").getPath()));
+        File blueLeft = new File(String.valueOf(this.getClass().getResource("/textures/blueleft.png").getPath()));
+        File pinkLeft = new File(String.valueOf(this.getClass().getResource("/textures/pinkleft.png").getPath()));
+        System.out.println(yellowLeft.exists());
         try
         {
-            yellowDuck = ImageIO.read(file);
-            blueDuck = ImageIO.read(file);
-            pinkDuck = ImageIO.read(file);
+            yellowDuck = ImageIO.read(yellowLeft);
+            blueDuck = ImageIO.read(blueLeft);
+            pinkDuck = ImageIO.read(pinkLeft);
         } catch (IOException e)
         {
             e.printStackTrace();

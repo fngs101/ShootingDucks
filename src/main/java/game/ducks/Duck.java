@@ -1,26 +1,23 @@
 package game.ducks;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public abstract class Duck
 {
     private String color;
     private int amountOfLife;
     BufferedImage image;
-    private int width;
-    private int height;
+    private int x;
+    private int y;
 
     Duck(String color, int amountOfLife, int width, int height)
     {
         this.color = color;
         this.amountOfLife = amountOfLife;
         image = prepareImage();  //-> factory method wzorzec projektowy
-        this.width = width;
-        this.height = height;
+        this.x = width;
+        this.y = height;
 
     }
 
@@ -48,23 +45,23 @@ public abstract class Duck
 
     public abstract void render(Graphics g);
 
-    public int getWidth()
+    public int getX()
     {
-        return width;
+        return x;
     }
 
-    public int getHeight()
+    public int getY()
     {
-        return height;
+        return y;
     }
 
-    public void setWidth(int width)
+    public void setX(int x)
     {
-        this.width = width;
+        this.x = x;
     }
 
-    public void setHeight(int height)
+    public void setY(int y)
     {
-        this.height = height;
+        this.y = y;
     }
 }

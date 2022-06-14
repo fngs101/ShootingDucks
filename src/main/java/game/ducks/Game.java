@@ -56,12 +56,16 @@ public class Game implements Runnable
         g = bs.getDrawGraphics();
         //clear screen
         g.clearRect(0, 0, width, height);
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, width, height);
+
         //draw
 
         if(State.getState() != null)
         {
             State.getState().render(g);
         }
+
         //end drawing
         bs.show();
         g.dispose();
@@ -95,7 +99,6 @@ public class Game implements Runnable
 
             if(timer >= 1000000000)
             {
-                System.out.println("Ticks and frames: " + ticks);
                 ticks = 0;
                 timer = 0;
             }
