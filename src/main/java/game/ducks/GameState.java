@@ -5,6 +5,7 @@ import java.awt.*;
 public class GameState extends State
 {
         //tu ma byc budowanie swiata
+    //prosciej bedzie z jednym oknem
     BlueDuck blue = new BlueDuck("blue", 5, 10, 10);
     @Override
     public void update(Graphics g)
