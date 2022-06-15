@@ -5,7 +5,7 @@ import java.awt.*;
 public class RecordState extends State
 {
     @Override
-    public void tick()
+    public void update(Graphics g)
     {
 
     }

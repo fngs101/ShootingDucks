@@ -16,7 +16,7 @@ public abstract class State
         return currentState;
     }
 
-    public abstract void tick();
+    public abstract void update(Graphics g);
 
     public abstract void render(Graphics g);
 }

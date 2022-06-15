@@ -9,7 +9,7 @@ public class SettingsState extends State
 
     }
     @Override
-    public void tick()
+    public void update(Graphics g)
     {
 
     }

@@ -41,7 +41,7 @@ public class Game implements Runnable
     {
         if(State.getState() != null)
         {
-            State.getState().tick();
+            State.getState().update(g);
         }
     }
 
@@ -53,6 +53,7 @@ public class Game implements Runnable
             gameView.getCanvas().createBufferStrategy(3);
             return;
         }
+
         g = bs.getDrawGraphics();
         //clear screen
         g.clearRect(0, 0, width, height);
@@ -91,7 +92,7 @@ public class Game implements Runnable
 
             if(delta >= 1)
             {
-                update();
+                update(); //wysypuje sie bo game object dopiero zostanie stworzony w render? to jak inaczej mam robic update
                 render();
                 ticks++;
                 delta--;

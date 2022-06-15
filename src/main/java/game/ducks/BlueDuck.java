@@ -34,8 +34,6 @@ public class BlueDuck extends Duck
 
     public void move(Graphics g)
     {
-        x++;
-        y++;
-        g.drawImage(image, x, y, null);
+        g.drawImage(image, x++, y++, null);
     }
 }
